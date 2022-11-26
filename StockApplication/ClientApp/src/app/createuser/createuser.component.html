@@ -1,0 +1,29 @@
+﻿<div class="main" style="margin-bottom:22vh">
+    <div class="container bg-dark card text-white" style="text-align:center">
+        <br />
+        <!--Header-->
+        <h1>Log In to Existing User</h1>
+        <br />
+        <!--Form for creating new user-->
+        <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+            <div class="form-group">
+                <label>Username: </label>
+                <input class="form-control" formControllerName="username" />
+                <p class="alert alert-warning" [hidden]="skjema.controls.username.valid || (skjema.controls.username.pristine && !submitted)">
+                    Username is req!
+                </p>
+            </div>
+            <div class="form-group">
+                <label>Password: </label>
+                <input class="form-control" formControllerName="password" />
+                <p class="alert alert-warning" [hidden]="skjema.controls.password.valid || (skjema.controls.password.pristine && !submitted)">
+                    Password is req!
+            </div>
+            <!--Sends company to script with function createUser() when confirm button is pressed-->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <button class="btn btn-default" routerLink="/">Back</button>
+            </div>
+        </form>
+    </div>
+</div>

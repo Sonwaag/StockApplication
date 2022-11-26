@@ -1,0 +1,30 @@
+﻿<div class="main" style="margin-bottom:25vh">
+    <div class="container card bg-light">
+        <br />
+        <!--Header-->
+        <h1>Leaderboard</h1>
+        <br />
+        <!--Input field for searching for users using the search() script-->
+        <input type="text" class="form-control" placeholder="Search for User" id="searchbar" onkeyup="search()">
+        <!--Displaying all the users using the formatUsers(users) script-->
+        <table id='tableSort' class='table table-striped table-bordered'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Username</th>
+                    <th>Amount of Shares</th>
+                    <th>Total Value</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let user of alleUsers">
+                <tr>
+                    <td>1++</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.amount}}</td>
+                    <td>{{user.value}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

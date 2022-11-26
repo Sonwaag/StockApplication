@@ -1,0 +1,26 @@
+﻿<div class="main" style="margin-bottom:25vh">
+    <!--Div listing all companies-->
+    <div class="container card bg-light">
+        <br />
+        <h1>List of all the active companies</h1>
+        <br />
+        <!--Searchbar results are retrieved from javascript function search()-->
+        <input type="text" class="form-control" placeholder="Search for Company" id="searchbar" (input)="search()">
+        <!--Listing of all companies are retrieved from javascript function formatCompanies(companies)-->
+        <table class='table table-striped' id='table'>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let company of alleCompanies">
+                <tr>
+                    <td><a class="link-primary" (click)="goToCompany([company.id])">{{company.name}}</a></td>
+                    <td>{{company.value}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br />

@@ -1,0 +1,26 @@
+﻿ <!--Main-->
+<div class="main" style="margin-bottom:22vh">
+    <div class="container bg-dark card text-white" style="text-align:center">
+        <br />
+        <!--Header-->
+        <h1>Create new company</h1>
+        <br />
+        <!--Form for creating new company-->
+        <form [formGroup]="group" class="form">
+            <div class="form-group">
+                <label>Company name: </label>
+                <br />
+                <!--Input field-->
+                <input type="text" id="name" required autocomplete="off" />
+            </div>
+            <br />
+            <!--Sends company to script with function createCompany() when confirm button is pressed-->
+            <div class="form-group">
+                <input type="button" id="reg" value="Confirm" (click)="createCompany()" class="btn btn-primary" />
+            </div>
+            <!--Error message-->
+            <div id="error" style="color: red"></div>
+        </form>
+    </div>
+</div>
+<br />
