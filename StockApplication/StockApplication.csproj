@@ -52,6 +52,7 @@
     <None Remove="ClientApp\src\app\profile\profile.component.ts" />
     <None Remove="ClientApp\src\app\swappage\swappage.component.ts" />
     <None Remove="ClientApp\src\app\TsClasses.ts" />
+    <None Remove="ClientApp\src\app\update-user\update-user.component.ts" />
     <None Remove="ClientApp\src\app\userClass.ts" />
   </ItemGroup>
 

@@ -71,6 +71,7 @@ namespace StockApplication.Controllers
         }
 
         //update a user, does not work for admin
+        [HttpPut("updateUser")]
         public async Task<ActionResult> UpdateUser(string username)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(SessionKeyUser)))
@@ -79,6 +80,7 @@ namespace StockApplication.Controllers
                 return Unauthorized();
             }
             string id = HttpContext.Session.GetString(SessionKeyUser);
+            _log.LogInformation(id);
             ServerResponse response = await _db.UpdateUser(id, username);
             bool updated = response.Status;
 
@@ -164,12 +166,8 @@ namespace StockApplication.Controllers
         public async Task<ActionResult> GetAllCompanies()
         {
             List<Company> companyList = await _db.GetAllCompanies();
-            List<ClientCompany> ret = new List<ClientCompany>();
-            foreach (Company company in companyList)
-            {
-                ret.Add(new ClientCompany(company.name, company.value, company.values));
-            }
-            return Ok(ret);
+            
+            return Ok(companyList);
         }
 
         //deletets the user in the session. cannot delete admin
@@ -202,7 +200,7 @@ namespace StockApplication.Controllers
         private const string SessionKeyCompany = "_currentCompany";
         //sets a new company in session
         
-        [HttpGet("{id}")]
+        [HttpGet("SetCurrentCompany")]
         public void SetCurrentCompany(string id)
         {
             HttpContext.Session.SetString(SessionKeyCompany, id);

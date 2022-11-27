@@ -158,6 +158,7 @@ namespace StockApplication.Code.DAL
             try
             {
                 User user = await GetUserByID(id); //getting a User entity with previous values (ID always stays the same)
+                _logger.LogInformation("User " + user.username);
                 if (user.username != newUsername) //if username is updated
                 {
                     if (!(await CheckUsername(newUsername))) //if new username is taken, return false

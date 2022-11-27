@@ -26,9 +26,9 @@ export class CompaniesComponent {
     }
 
     goToCompany(id: string) {
-        this._http.get("api/Stock/" + id)
+        this._http.get("api/Stock/SetCurrentCompany?id=" + id)
             .subscribe(_retur => {
-                console.log("Session set")
+                console.log("Session set"+ id)
                 this.router.navigate(['/company']);
             },
             error => console.log(error)

@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { LeaderboardComponent } from './leaderboard/leaderbord.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SwapPageComponent } from './swappage/swappage.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 const appRoots: Routes = [
     { path: 'home', component: HomeComponent },
@@ -18,6 +19,7 @@ const appRoots: Routes = [
     { path: 'leaderboard', component: LeaderboardComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'company', component: CompanyComponent },
+    { path: 'updateuser', component: UpdateUserComponent },
     { path:'', redirectTo:'home', pathMatch:'full' }
 ]
 

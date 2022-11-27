@@ -1,0 +1,23 @@
+﻿<!--Main-->
+<div class="container bg-dark card text-white main" style="margin-bottom:23vh;text-align:center">
+    <br />
+    <!--Header-->
+    <h1>Change username/balance</h1>
+    <br />
+    <form [formGroup]="skjema" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Username</label>
+            <input class="form-control" formControlName="username" />
+            <p class="alert alert-warning" [hidden]="skjema.controls.username.valid || (skjema.controls.username.pristine && !submitted)">
+                Username er obligatorisk.
+            </p>
+        </div>
+        
+        <!--Sends company to script with function createUser() when confirm button is pressed-->
+        <div class="form-group">
+            <button type="submit" [disabled]="!skjema.valid" class="btn btn-primary">Update</button>
+            <button class="btn btn-default" routerLink="/profile">Tilbake</button>
+        </div>
+    </form>
+</div>
+<br />

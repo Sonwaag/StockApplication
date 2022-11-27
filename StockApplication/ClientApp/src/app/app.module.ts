@@ -15,6 +15,7 @@ import { CompaniesComponent } from './companies/companies.component';
 import { LeaderboardComponent } from './leaderboard/leaderbord.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CompanyComponent } from './company/company.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { CompanyComponent } from './company/company.component';
       CompaniesComponent,
       LeaderboardComponent,
       ProfileComponent,
-      CompanyComponent
+      CompanyComponent,
+      UpdateUserComponent
+
   ],
   imports: [
       BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
