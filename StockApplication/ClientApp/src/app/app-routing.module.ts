@@ -7,12 +7,12 @@ import { CreateUserComponent } from './createuser/createuser.component';
 import { HomeComponent } from './home/home.component';
 import { LeaderboardComponent } from './leaderboard/leaderbord.component';
 import { ProfileComponent } from './profile/profile.component';
-import { SwapPageComponent } from './swappage/swappage.component';
+import { LogInComponent } from './login/login.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 
 const appRoots: Routes = [
     { path: 'home', component: HomeComponent },
-    { path: 'swappage', component: SwapPageComponent },
+    { path: 'login', component: LogInComponent },
     { path: 'createuser', component: CreateUserComponent },
     { path: 'createcompany', component: CreateCompanyComponent },
     { path: 'companies', component: CompaniesComponent },

@@ -11,10 +11,10 @@
             <div class=" card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class=" row no-gutters align-items-center">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase">Balance (live): <i class="fa fa-money"></i></div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase">Balance (live): </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             <!--Getting the balance from the javascript function formatBalance()-->
-                            <p id="balance">{{user.balance}} <i class="fa fa-money"></i>  </p>
+                            <p id="balance"><br /> &nbsp;<i class="fa fa-money">&nbsp;</i>{{user.balance}}$  </p>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                         <div class="text-xs font-weight-bold text-primary text-uppercase">Value of all assets:      </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             <!--Value retrieved from javascript function totalValue()-->
-                            <div id="totalValue">{{totalvalue.value}}</div>
+                            <div id="totalValue">{{totalvalue.value}} $</div>
                         </div>
 
                     </div>
@@ -68,9 +68,9 @@
     <br />
     <div id="buttons" class="container">
         <!--Two buttons displayed on all users except admin, edit and delete buttons.-->
-        <button class="btn btn-primary" routerLink="/updateuser">Edit User</button>
-        <button class="btn btn-primary" (click)="logOut()">Log Out</button>
-        <button class="btn btn-danger" (click)="deleteUser()">Delete User</button>
+        <button class="btn btn-primary" style="margin-right:16px" routerLink="/updateuser">Edit User</button>
+        <button class="btn btn-warning" style="margin-right:16px" (click)="logOut()">Log Out</button>
+        <button class="btn btn-danger" style="margin-right:16px" (click)="deleteUser()">Delete User</button>
         <div id="error"></div>
     </div>
 </div>

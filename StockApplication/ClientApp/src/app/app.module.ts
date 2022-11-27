@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NavMenuComponent } from './nav-meny/nav-meny.component';
 import { FooterMenuComponent } from './footer-meny/footer-meny.component';
-import { SwapPageComponent } from './swappage/swappage.component';
+import { LogInComponent } from './login/login.component';
 import { CreateUserComponent } from './createuser/createuser.component';
 import { CreateCompanyComponent } from './createcompany/createcompany.component';
 import { CompaniesComponent } from './companies/companies.component';
@@ -23,7 +23,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
       HomeComponent,
       NavMenuComponent,
       FooterMenuComponent,
-      SwapPageComponent,
+      LogInComponent,
       CreateUserComponent,
       CreateCompanyComponent,
       CompaniesComponent,
