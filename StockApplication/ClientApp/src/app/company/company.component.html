@@ -1,19 +1,21 @@
-﻿<h1>{{company.name}}</h1>
+﻿<div class="main" style="margin-bottom:10vh">
+    <h1>{{company.name}}</h1>
 
-<div id="userinfo">
-    <h5>Current balance: <b>{{ user.balance }}$</b></h5>
-    <h5>Owned shares: <b>{{ clientStock.amount }}</b></h5>
-    <input type="number" name="amount" />
+    <div id="userinfo">
+        <h5>Current balance: <b>{{ user.balance }}$</b></h5>
+        <h5>Owned shares: <b>{{ clientStock.amount }}</b></h5>
+        <input type="number" name="amount" />
 
 
-</div>
+    </div>
 
-<div id="divChart">
-    <canvas #lineChart id="myChart">{{ chart }}</canvas>
-</div>
+    <div id="divChart">
+        <canvas #lineChart id="myChart">{{ chart }}</canvas>
+    </div>
 
-<div id="info">
-    <h3>Current value:<b>{{ company.value }}$</b></h3>
-    <h4>Last change: <b>{{ change }}%</b></h4>
-    <h4>Last 10 minutes: <b>{{ tenMin }}%</b></h4>
+    <div id="info">
+        <h3>Current value:<b>{{ company.value }}$</b></h3>
+        <h4>Last change: <b>{{ change }}%</b></h4>
+        <h4>Last 10 minutes: <b>{{ tenMin }}%</b></h4>
+    </div>
 </div>
