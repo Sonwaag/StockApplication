@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { clientUser, clientStock } from '../TsClasses';
 
 @Component({
-    templateUrl: './profile.component.html'
+    templateUrl: './profile.component.html',
 })
 export class ProfileComponent {
     public user: clientUser;

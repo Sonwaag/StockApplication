@@ -7,31 +7,32 @@
     <!--Top div containing 2 columns-->
     <div class="container p-3 mb-2 bg-dark card">
         <!--Column 1-->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class=" card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class=" row no-gutters align-items-center">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase">Balance (live): </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            <!--Getting the balance from the javascript function formatBalance()-->
-                            <p id="balance"><br /> &nbsp;<i class="fa fa-money">&nbsp;</i>{{user.balance}}$  </p>
+        <div class="row">
+            <div class="col-xl-4 col-md-6 mb-4" id="box1">
+                <div class=" card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class=" row no-gutters align-items-center">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase">Balance (live): </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <!--Getting the balance from the javascript function formatBalance()-->
+                                <p id="balance"><br /> &nbsp;<i class="fa fa-money">&nbsp;</i>{{user.balance}}$  </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
-        <!--Column 2 positioned to the right-->
-        <div class="col-xl-3 col-md-6 mb-4" style="position:absolute; right:0;">
-            <div class=" card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class=" row no-gutters align-items-center">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase">Value of all assets:      </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            <!--Value retrieved from javascript function totalValue()-->
-                            <div id="totalValue">{{totalvalue.value}} $</div>
-                        </div>
+            <!--Column 2 positioned to the right-->
+            <div class="col-xl-4 col-md-6 mb-4 ml-auto">
+                <div class=" card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class=" row no-gutters align-items-center">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase"><br />Value of all assets:     </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <!--Value retrieved from javascript function totalValue()-->
+                                <div id="totalValue"><br />&nbsp;{{totalvalue.value}} $ <br>  </div>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
