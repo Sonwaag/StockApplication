@@ -274,7 +274,7 @@ namespace StockApplication.Controllers
         
 
        
-
+        [HttpPost("logIn")]
         public async Task<ActionResult> LogIn(Login login)
         {
             ServerResponse response = await _db.LogIn(login.username, login.password);

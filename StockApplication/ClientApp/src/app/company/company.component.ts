@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewChild } from '@angular/core';
+﻿import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { clientCompany } from '../TsClasses';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ export class CompanyComponent {
     public user: clientUser;
     
     @ViewChild('lineChart', { static: true }) private chartRef;
-    //@ViewChild('input_amount', { static: true }) private inputRef;
+    @ViewChild('input', { static: true }) input: ElementRef;
 
     ngOnInit() {
         this.getCurrentCompany();
@@ -89,7 +89,26 @@ export class CompanyComponent {
                 error => console.log(error)
             );
     }
+    buyStock() {
+        var input_amount = this.input.nativeElement.innerHTML;
+        this.http.get("api/Stock/buyStock?amount=" + input_amount)
+            .subscribe(_retur => {
+                this.getStock();
+            },
+                error => console.log(error)
+            );
+    }
 
+    sellStock() {
+        var input_amount = this.input.nativeElement.innerHTML;
+        console.log(input_amount);
+        this.http.get("api/Stock/sellStock?amount=" + input_amount)
+            .subscribe(_retur => {
+                this.getStock();
+            },
+                error => console.log(error)
+            );
+    }
    
 
 }
