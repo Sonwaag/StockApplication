@@ -29,7 +29,7 @@ export class ProfileComponent {
             );
     };
     getUsersTotalValue(id: string) {
-        this.http.get<clientStock>("api/Stock/getUsersValueByID/" + id)
+        this.http.get<clientStock>("api/Stock/getUsersValueByID?id=" + id)
             .subscribe(totalvalue => {
                 this.totalvalue = totalvalue;
             },
@@ -46,7 +46,7 @@ export class ProfileComponent {
     };
 
     deleteUser() {
-        this.http.delete("api/Stock/deleteUser/" + this.user.id)
+        this.http.delete("api/Stock/deleteUser?id=" + this.user.id)
             .subscribe(_retur => {
                 this.router.navigate(['/']);
             },
@@ -55,7 +55,7 @@ export class ProfileComponent {
     };
 
     logOut() {
-        this.http.post("api/Stock/logOut", this.user)
+        this.http.get("api/Stock/logOut/")
             .subscribe(_retur => {
                 this.router.navigate(['/']);
             },

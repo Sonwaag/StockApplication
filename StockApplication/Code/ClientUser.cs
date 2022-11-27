@@ -14,6 +14,7 @@ namespace StockApplication.Code
         public float balance { get; set; }
         public ClientUser(Guid id, string username, float balance)
         {
+            this.id = id;
             this.username = username;
             this.balance = balance;
         }

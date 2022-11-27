@@ -199,13 +199,13 @@ namespace StockApplication.Code.DAL
                 {
                     return new ServerResponse(false, "Username taken!");
                 }
-                Guid id = Guid.NewGuid(); //generate a new Guid for user, (primary key)
+                
                 string salt = CreateSalt(saltSize);
                 string hash = HashPassword(password, salt);
-                User user = new User(id, username, hash, salt, startBalance); //new user entity with id generated, username from input and startBalance configured at line 19
+                User user = new User(Guid.NewGuid(), username, hash, salt, startBalance); //new user entity with id generated, username from input and startBalance configured at line 19
                 _db.UserSet.Add(user); //add user to databaseset
                 await _db.SaveChangesAsync(); //saving
-                _logger.LogInformation("User " + username + " was created!");
+                _logger.LogInformation("User " + username + user.id + " was created!");
                 return new ServerResponse(true);
             }
             catch (Exception e)

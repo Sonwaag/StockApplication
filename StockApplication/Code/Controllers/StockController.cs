@@ -102,6 +102,7 @@ namespace StockApplication.Controllers
                 return BadRequest();
             }
             User user = await _db.GetUserByUsername(login.username);
+            _log.LogInformation(user.id.ToString());
             if (user == null)
             {
                 _log.LogInformation(response.Response);
@@ -172,11 +173,11 @@ namespace StockApplication.Controllers
         }
 
         //deletets the user in the session. cannot delete admin
-        [HttpDelete("deleteUser/{id}")]
+        [HttpDelete("deleteUser")]
         public async Task<ActionResult> DeleteUser(string id)
         {
             
-            if (string.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(id) && (HttpContext.Session.GetString(SessionKeyUser) == id))
             {
                 _log.LogInformation(RESPONSE_userNotLoggedIn);
                 return Unauthorized();
@@ -323,7 +324,7 @@ namespace StockApplication.Controllers
         }
 
         //get ClientStock object with specific user's value
-        [HttpGet("getUsersValueByID/{id}")]
+        [HttpGet("getUsersValueByID")]
         public async Task<ActionResult> GetUsersValueByID(string id)
         {
             string userid = HttpContext.Session.GetString(SessionKeyUser);
