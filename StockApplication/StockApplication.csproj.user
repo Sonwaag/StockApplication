@@ -46,11 +46,7 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Update="ClientApp\src\app\swappage\swappage.component.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Update="ClientApp\src\app\footer-meny\footer-meny.component.ts">
       <SubType>Code</SubType>

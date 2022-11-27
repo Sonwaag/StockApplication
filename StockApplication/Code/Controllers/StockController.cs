@@ -344,6 +344,7 @@ namespace StockApplication.Controllers
         
 
         //tries to buy stock for user and company in session
+        [HttpGet("buyStock")]
         public async Task<ActionResult> BuyStock(int amount)
         {
             string userid = HttpContext.Session.GetString(SessionKeyUser);
@@ -363,6 +364,7 @@ namespace StockApplication.Controllers
         }
 
         //tries to sell stock for user and company in session
+        [HttpGet("sellStock")]
         public async Task<ActionResult> SellStock(int amount)
         {
             string userid = HttpContext.Session.GetString(SessionKeyUser);
@@ -383,6 +385,7 @@ namespace StockApplication.Controllers
         }
 
         //gets the current stock from user and company in session
+        [HttpGet("GetCurrentStock")]
         public async Task<ActionResult> GetCurrentStock()
         {
             string userid = HttpContext.Session.GetString(SessionKeyUser);
@@ -396,7 +399,7 @@ namespace StockApplication.Controllers
             if(stock == null)
             {
                 _log.LogInformation(RESPONSE_stockNotFound);
-                return BadRequest();
+                return Ok(new ClientStock(null, 0));
             }
             return Ok(new ClientStock(stock.companyName, stock.amount));
         }
