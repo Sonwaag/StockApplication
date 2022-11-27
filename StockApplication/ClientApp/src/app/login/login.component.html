@@ -1,8 +1,8 @@
 ﻿<div class="main" style="margin-bottom:22vh">
-    <div class="container bg-dark card text-white" style="text-align:center">
+    <div class="container bg-dark card text-white" style="text-align:center;width:65%">
         <br />
         <!--Header-->
-        <h1>Log In</h1>
+        <h1><u>Sign-in</u></h1>
         <br />
         <!--Form for creating new user-->
         <form [formGroup]="skjema" (ngSubmit)="onSubmit()">
@@ -22,8 +22,14 @@
             </div>
             <!--Sends company to script with function createUser() when confirm button is pressed-->
             <div class="form-group">
-                <button type="submit" style="margin-right:15px" [disabled]="!skjema.valid" class="btn btn-primary">Registrer</button>
+                <br />
+                <button type="submit" style="margin-right:15px" [disabled]="!skjema.valid" class="btn btn-primary">Sign in</button>
                 <button class="btn btn-primary" routerLink="/">Tilbake</button>
+            </div>
+            <br />
+            <div class="form-group">
+                <p class="" style="font-size:17px; align-content:center;"><i>You don't have a user?</i></p>
+                <button class="btn btn-primary" routerLink="/createuser">Create User</button>
             </div>
         </form>
     </div>
