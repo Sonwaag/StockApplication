@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace StockApplication.Code
 {
-    public class ClientUser
+    public class Login
     {
-        public Guid id { get; set; }
         [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}")]
         public string username { get; set; }
-        public float balance { get; set; }
-        public ClientUser(Guid id, string username, float balance)
+        [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}")]
+        public string password { get; set; }
+        public Login(string username, string password)
         {
             this.username = username;
-            this.balance = balance;
+            this.password = password;
         }
     }
 }

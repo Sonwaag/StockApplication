@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sondre\\Source\\Repos\\StockApplication\\StockApplication\\StockApplication.csproj": {}
+    "C:\\Users\\ludvi\\Source\\Repos\\StockApplication5\\StockApplication\\StockApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sondre\\Source\\Repos\\StockApplication\\StockApplication\\StockApplication.csproj": {
+    "C:\\Users\\ludvi\\Source\\Repos\\StockApplication5\\StockApplication\\StockApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sondre\\Source\\Repos\\StockApplication\\StockApplication\\StockApplication.csproj",
+        "projectUniqueName": "C:\\Users\\ludvi\\Source\\Repos\\StockApplication5\\StockApplication\\StockApplication.csproj",
         "projectName": "StockApplication",
-        "projectPath": "C:\\Users\\Sondre\\Source\\Repos\\StockApplication\\StockApplication\\StockApplication.csproj",
-        "packagesPath": "C:\\Users\\Sondre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sondre\\Source\\Repos\\StockApplication\\StockApplication\\obj\\",
+        "projectPath": "C:\\Users\\ludvi\\Source\\Repos\\StockApplication5\\StockApplication\\StockApplication.csproj",
+        "packagesPath": "C:\\Users\\ludvi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ludvi\\Source\\Repos\\StockApplication5\\StockApplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Sondre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ludvi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -107,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.414\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.411\\RuntimeIdentifierGraph.json"
         }
       }
     }

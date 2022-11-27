@@ -6,17 +6,19 @@
         <h1>Create new company</h1>
         <br />
         <!--Form for creating new company-->
-        <form [formGroup]="group" class="form">
+        <form [formGroup]="skjema" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label>Company name: </label>
-                <br />
-                <!--Input field-->
-                <input type="text" id="name" required autocomplete="off" />
+                <label>Company Name</label>
+                <input class="form-control" formControlName="companyName" />
+                <p class="alert alert-warning" [hidden]="skjema.controls.companyName.valid || (skjema.controls.companyName.pristine && !submitted)">
+                    Company-Name er obligatorisk.
+                </p>
             </div>
             <br />
             <!--Sends company to script with function createCompany() when confirm button is pressed-->
             <div class="form-group">
-                <input type="button" id="reg" value="Confirm" (click)="createCompany()" class="btn btn-primary" />
+                <button type="submit" [disabled]="!skjema.valid" class="btn btn-primary">Registrer</button>
+                <button class="btn btn-default" routerLink="/">Tilbake</button>
             </div>
             <!--Error message-->
             <div id="error" style="color: red"></div>

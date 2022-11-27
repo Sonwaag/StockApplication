@@ -141,7 +141,7 @@ namespace StockApplication.Code.DAL
                 List<ClientUser> clientUsers = new List<ClientUser>();
                 foreach(User user in users)
                 {
-                    clientUsers.Add(new ClientUser(user.username, user.balance));
+                    clientUsers.Add(new ClientUser(user.id, user.username, user.balance));
                 }
                 return clientUsers;
             }
@@ -220,7 +220,7 @@ namespace StockApplication.Code.DAL
         {
             try
             {
-                User user = await GetUserByID(Guid.Parse(id));
+                User user = await GetUserByID(id);
                 _db.UserSet.Remove(user); //function getUserByID gives us the user entity that will be removed
                 await _db.SaveChangesAsync(); //save changes
                 _logger.LogInformation("User " + user.username + " was deleted!");
@@ -254,12 +254,12 @@ namespace StockApplication.Code.DAL
         }
 
         //get company-entity with primary key
-        private async Task<Company> GetCompanyByID(Guid id)
+        public async Task<Company> GetCompanyByID(Guid id)
         {
             Company company = await _db.CompanySet.FindAsync(id); //return company-entity with given primary key values
             return company;
         }
-        private async Task<Company> GetCompanyByName(string name)
+        public async Task<Company> GetCompanyByName(string name)
         {
             Company[] coms = await _db.CompanySet.Where(p => p.name == name).ToArrayAsync(); //get array of User-entities with given username
             if (coms.Length == 1) //checking if there only exists 1 entity with current username
@@ -653,7 +653,7 @@ namespace StockApplication.Code.DAL
         {
             float totalValue = 0; //total value 
             int amount = 0; //amount of shares
-            User user = await GetUserByID(Guid.Parse(id));
+            User user = await GetUserByID(id);
             List<ClientStock> dbList = await GetStocksWithUserID(id);
             foreach (ClientStock stock in dbList) //iterating through list and adding value to totalValue
             {

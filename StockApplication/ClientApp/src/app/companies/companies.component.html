@@ -16,7 +16,7 @@
             </thead>
             <tbody *ngFor="let company of alleCompanies">
                 <tr>
-                    <td><a class="link-primary" (click)="goToCompany([company.id])">{{company.name}}</a></td>
+                    <td><a class="link-primary" (click)="goToCompany(company.id)">{{company.name}}</a></td>
                     <td>{{company.value}}</td>
                 </tr>
             </tbody>

@@ -11,7 +11,7 @@ export class CreateUserComponent {
     skjema: FormGroup;
 
     validering = {
-        id: [""],
+        
         username: [
             null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])
         ],
@@ -24,21 +24,18 @@ export class CreateUserComponent {
         this.skjema = fb.group(this.validering);
     }
 
-    vedSubmit() {
-        this.lagreUser();
+    onSubmit() {
+        this.createUser();
     }
 
-    lagreUser() {
-        const lagretUser = new user();
-
-        lagretUser.username = this.skjema.value.username;
-        lagretUser.password = this.skjema.value.password;
-
-        this.http.post("api/stock/", lagretUser)
-            .subscribe(_retur => {
-                this.router.navigate(['/']);
-            },
-            error => console.log(error)
-            );
+    createUser() {
+        var inndata = { username: this.skjema.value.username, password: this.skjema.value.password }
+        
+        this.http.post("api/Stock/createUser", inndata)
+          .subscribe(_retur => {
+              this.router.navigate(['/']);
+          },
+          error => console.log(error)
+          );
     };
 }

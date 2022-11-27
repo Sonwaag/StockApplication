@@ -1,7 +1,7 @@
 ﻿<div class="main" style="margin-bottom:25vh">
     <div class="container">
         <!--Header-->
-        <h1> Welcome to your profile: <i id="name" class="text-uppercase"></i> </h1>
+        <h1> Welcome to your profile: <i id="name" class="text-uppercase">{{user.username}}</i> </h1>
     </div>
     <br />
     <!--Top div containing 2 columns-->
@@ -14,7 +14,7 @@
                         <div class="text-xs font-weight-bold text-primary text-uppercase">Balance (live): <i class="fa fa-money"></i></div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             <!--Getting the balance from the javascript function formatBalance()-->
-                            <p id="balance">"" <i class="fa fa-money"></i>  </p>
+                            <p id="balance">{{user.balance}} <i class="fa fa-money"></i>  </p>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                         <div class="text-xs font-weight-bold text-primary text-uppercase">Value of all assets:      </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
                             <!--Value retrieved from javascript function totalValue()-->
-                            <div id="totalValue"></div>
+                            <div id="totalValue">{{totalvalue.value}}</div>
                         </div>
 
                     </div>
@@ -46,14 +46,31 @@
     <!--Div displaying owned stocks (if owned), retrieving from javascript function formatStock() -->
     <div class="container card bg-light">
         <h1>Your funds</h1>
-        <div id="ownedstock"></div>
+        <div id="ownedstock">
+            <table class='table table-striped' id='table'>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let stock of list">
+                    <tr>
+                        <td>{{stock.name}}</td>
+                        <td>{{stock.amount}}</td>
+                        <td>{{stock.value}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <br />
     <div id="buttons" class="container">
         <!--Two buttons displayed on all users except admin, edit and delete buttons.-->
-        <button class="btn btn-primary" onclick="editUser()">Edit User</button>
-        <button class="btn btn-primary" onclick="logOut()">Log Out</button>
-        <button class="btn btn-danger" onclick="deleteUser()">Delete User</button>
+        <button class="btn btn-primary" routerLink="/updateUser">Edit User</button>
+        <button class="btn btn-primary" (click)="logOut()">Log Out</button>
+        <button class="btn btn-danger" (click)="deleteUser()">Delete User</button>
         <div id="error"></div>
     </div>
 </div>

@@ -39,5 +39,7 @@ namespace StockApplication.Code.DAL
         Task<float> GetStockValue(Stock stock);
         Task<List<Stock>> GetAllStocks();
         Task UpdateValues();
+        Task<Company> GetCompanyByName(string name);
+        Task<Company> GetCompanyByID(Guid id);
     }
 }
