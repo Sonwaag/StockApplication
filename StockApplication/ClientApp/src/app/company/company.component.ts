@@ -16,9 +16,10 @@ export class CompanyComponent {
     public tenMin: string;
     public clientStock: clientStock;
     public user: clientUser;
+    public value: number;
     
     @ViewChild('lineChart', { static: true }) private chartRef;
-    @ViewChild('input', { static: true }) input: ElementRef;
+    //@ViewChild('input', { static: true }) input: ElementRef;
 
     ngOnInit() {
         this.getCurrentCompany();
@@ -90,21 +91,29 @@ export class CompanyComponent {
             );
     }
     buyStock() {
-        var input_amount = this.input.nativeElement.innerHTML;
-        this.http.get("api/Stock/buyStock?amount=" + input_amount)
+        const obj = {
+            value: (<HTMLInputElement>document.getElementById("amount")).value
+        };
+        console.log(obj);
+        this.http.put("api/Stock/buyStock", obj)
             .subscribe(_retur => {
                 this.getStock();
+                this.getUser();
+                this.getCurrentCompany();
             },
                 error => console.log(error)
             );
     }
 
-    sellStock() {
-        var input_amount = this.input.nativeElement.innerHTML;
-        console.log(input_amount);
-        this.http.get("api/Stock/sellStock?amount=" + input_amount)
+    sellStock() {   
+        const obj = {
+            value: (<HTMLInputElement>document.getElementById("amount")).value
+        };
+        this.http.put("api/Stock/sellStock", obj)
             .subscribe(_retur => {
                 this.getStock();
+                this.getUser();
+                this.getCurrentCompany();
             },
                 error => console.log(error)
             );

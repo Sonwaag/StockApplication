@@ -4,7 +4,7 @@
     <div id="userinfo">
         <h5>Current balance: <b>{{ user.balance }}$</b></h5>
         <h5>Owned shares: <b>{{ clientStock.amount }}</b></h5>
-        <input type="number" name="amount" #input />
+        <input type="number" name="amount" id="amount"/>
         <button class="btn btn-primary" (click)="buyStock()">Buy</button>
         <button class="btn btn-primary" (click)="sellStock()">Sell</button>
 
@@ -15,7 +15,7 @@
     </div>
 
     <div id="info">
-        <h3>Current value:<b>{{ company.value }}$</b></h3>
+        <h3>Current value: <b>{{ company.value }}$</b></h3>
         <h4>Last change: <b>{{ change }}%</b></h4>
         <h4>Last 10 minutes: <b>{{ tenMin }}%</b></h4>
     </div>

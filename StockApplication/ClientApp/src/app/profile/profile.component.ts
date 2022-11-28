@@ -22,22 +22,22 @@ export class ProfileComponent {
         this.http.get<clientUser>("api/Stock/getCurrentUser")
             .subscribe(user => {
                 this.user = user;
-                this.getUsersTotalValue(user.id); 
-                this.getUsersStocks(user.id);
+                this.getUsersTotalValue(); 
+                this.getUsersStocks();
             },
                 error => console.log(error)
             );
     };
-    getUsersTotalValue(id: string) {
-        this.http.get<clientStock>("api/Stock/getUsersValueByID?id=" + id)
+    getUsersTotalValue() {
+        this.http.get<clientStock>("api/Stock/getUserValue")
             .subscribe(totalvalue => {
                 this.totalvalue = totalvalue;
             },
                 error => console.log(error)
             );
     };
-    getUsersStocks(id: string) {
-        this.http.get<clientStock[]>("api/Stock/getStocksForUser/" + id)
+    getUsersStocks() {
+        this.http.get<clientStock[]>("api/Stock/getStocksForUser")
             .subscribe(list => {
                 this.list = list;
             },
@@ -46,7 +46,7 @@ export class ProfileComponent {
     };
 
     deleteUser() {
-        this.http.delete("api/Stock/deleteUser?id=" + this.user.id)
+        this.http.delete("api/Stock/deleteUser")
             .subscribe(_retur => {
                 this.router.navigate(['/']);
             },

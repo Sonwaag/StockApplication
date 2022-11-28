@@ -2,7 +2,7 @@
 <div class="container bg-dark card text-white main" style="margin-bottom:23vh;text-align:center">
     <br />
     <!--Header-->
-    <h1>Change username/balance</h1>
+    <h1>Change username</h1>
     <br />
     <form [formGroup]="skjema" (ngSubmit)="onSubmit()">
         <div class="form-group">
@@ -16,7 +16,7 @@
         <!--Sends company to script with function createUser() when confirm button is pressed-->
         <div class="form-group">
             <button type="submit" [disabled]="!skjema.valid" class="btn btn-primary">Update</button>
-            <button class="btn btn-default" routerLink="/profile">Tilbake</button>
+            <button class="btn btn-primary" routerLink="/profile">Back</button>
         </div>
     </form>
 </div>

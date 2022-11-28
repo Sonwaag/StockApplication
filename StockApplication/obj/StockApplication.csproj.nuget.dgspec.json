@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ludvi\\Source\\Repos\\StockApplication5\\StockApplication\\StockApplication.csproj": {}
+    "C:\\Users\\sondr\\OneDrive\\Documents\\GitHub\\StockApplication\\StockApplication\\StockApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ludvi\\Source\\Repos\\StockApplication5\\StockApplication\\StockApplication.csproj": {
+    "C:\\Users\\sondr\\OneDrive\\Documents\\GitHub\\StockApplication\\StockApplication\\StockApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ludvi\\Source\\Repos\\StockApplication5\\StockApplication\\StockApplication.csproj",
+        "projectUniqueName": "C:\\Users\\sondr\\OneDrive\\Documents\\GitHub\\StockApplication\\StockApplication\\StockApplication.csproj",
         "projectName": "StockApplication",
-        "projectPath": "C:\\Users\\ludvi\\Source\\Repos\\StockApplication5\\StockApplication\\StockApplication.csproj",
-        "packagesPath": "C:\\Users\\ludvi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ludvi\\Source\\Repos\\StockApplication5\\StockApplication\\obj\\",
+        "projectPath": "C:\\Users\\sondr\\OneDrive\\Documents\\GitHub\\StockApplication\\StockApplication\\StockApplication.csproj",
+        "packagesPath": "C:\\Users\\sondr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sondr\\OneDrive\\Documents\\GitHub\\StockApplication\\StockApplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ludvi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sondr\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,7 +95,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -107,7 +108,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.411\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -41,5 +41,6 @@ namespace StockApplication.Code.DAL
         Task UpdateValues();
         Task<Company> GetCompanyByName(string name);
         Task<Company> GetCompanyByID(Guid id);
+        Task<List<ClientCompany>> GetAllClientCompanies();
     }
 }

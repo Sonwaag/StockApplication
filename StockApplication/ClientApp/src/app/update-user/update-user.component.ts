@@ -13,7 +13,7 @@ export class UpdateUserComponent {
     validering = {
 
         username: [
-            null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])
+            null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{3,12}")])
         ],
     }
 
@@ -26,9 +26,11 @@ export class UpdateUserComponent {
     }
 
     updateUser() {
-        var name = this.skjema.value.username;
+        const obj = {
+            value: this.skjema.value.username
+        };
 
-        this.http.put("api/Stock/updateUser", name)
+        this.http.put("api/Stock/updateUser", obj)
             .subscribe(_retur => {
                 this.router.navigate(['/']);
             },

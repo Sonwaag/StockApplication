@@ -1,5 +1,4 @@
 ﻿export class company {
-    id: string;
     name: string;
     value: number;
     values: string;
@@ -18,7 +17,6 @@ export class clientStock {
 }
 
 export class clientUser {
-    id: string;
     username: string;
     balance: number;
 }

@@ -8,9 +8,9 @@ namespace StockApplication.Code
 {
     public class Login
     {
-        [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}")]
+        [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{3,12}")]
         public string username { get; set; }
-        [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}")]
+        [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{8,32}")]
         public string password { get; set; }
         public Login(string username, string password)
         {

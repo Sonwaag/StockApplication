@@ -17,7 +17,6 @@ namespace StockApplication.Controllers
     public class StockController : ControllerBase
     {
         private readonly IStockRepository _db;
-        private readonly IHostedService listenerService;
         private readonly ILogger _log;
 
         private readonly string RESPONSE_userNotLoggedIn = "You have to be logged in to perform this action!";
@@ -40,7 +39,7 @@ namespace StockApplication.Controllers
                 _log.LogInformation(RESPONSE_userNotFound);
                 return NotFound();
             }
-            return Ok(new ClientUser(user.id, user.username, user.balance));
+            return Ok(new ClientUser(user.username, user.balance));
         }
 
         //returns a user by a given username
@@ -60,7 +59,7 @@ namespace StockApplication.Controllers
             }
 
             //never pass id to client
-            return Ok(new ClientUser(user.id, user.username, user.balance));
+            return Ok(new ClientUser(user.username, user.balance));
         }
 
         //returns all registered users with their usernames and passwords
@@ -72,7 +71,7 @@ namespace StockApplication.Controllers
 
         //update a user, does not work for admin
         [HttpPut("updateUser")]
-        public async Task<ActionResult> UpdateUser(string username)
+        public async Task<ActionResult> UpdateUser(StringWrapper wrap)
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(SessionKeyUser)))
             {
@@ -80,8 +79,7 @@ namespace StockApplication.Controllers
                 return Unauthorized();
             }
             string id = HttpContext.Session.GetString(SessionKeyUser);
-            _log.LogInformation(id);
-            ServerResponse response = await _db.UpdateUser(id, username);
+            ServerResponse response = await _db.UpdateUser(id, wrap.value);
             bool updated = response.Status;
 
             if (!updated)
@@ -96,6 +94,11 @@ namespace StockApplication.Controllers
         [HttpPost("createUser")]
         public async Task<ActionResult> CreateUser(Login login)
         {
+            if (!ModelState.IsValid)
+            {
+                _log.LogInformation("Username or password invalid");
+                return BadRequest();
+            }
             ServerResponse response = await _db.CreateUser(login.username, login.password);
             bool created = response.Status;
             if (!created)
@@ -162,20 +165,20 @@ namespace StockApplication.Controllers
         }
 
         //returns a list of all companies registeres
-        [HttpGet]
+        [HttpGet("getAllCompanies")]
         public async Task<ActionResult> GetAllCompanies()
         {
-            List<Company> companyList = await _db.GetAllCompanies();
+            List<ClientCompany> companyList = await _db.GetAllClientCompanies();
             
             return Ok(companyList);
         }
 
         //deletets the user in the session. cannot delete admin
         [HttpDelete("deleteUser")]
-        public async Task<ActionResult> DeleteUser(string id)
+        public async Task<ActionResult> DeleteUser()
         {
-            
-            if (string.IsNullOrEmpty(id) && (HttpContext.Session.GetString(SessionKeyUser) == id))
+            string id = HttpContext.Session.GetString(SessionKeyUser);
+            if (string.IsNullOrEmpty(id))
             {
                 _log.LogInformation(RESPONSE_userNotLoggedIn);
                 return Unauthorized();
@@ -201,13 +204,13 @@ namespace StockApplication.Controllers
         //sets a new company in session
         
         [HttpGet("SetCurrentCompany")]
-        public void SetCurrentCompany(string id)
+        public void SetCurrentCompany(string name)
         {
-            HttpContext.Session.SetString(SessionKeyCompany, id);
+            HttpContext.Session.SetString(SessionKeyCompany, name);
         }
 
         //gets the company id saved in session    
-        public string GetCurrentCompanyID()
+        public string GetCurrentCompanyName()
         {
             return HttpContext.Session.GetString(SessionKeyCompany);
         }
@@ -216,14 +219,14 @@ namespace StockApplication.Controllers
         [HttpGet("company/current")]
         public async Task<ActionResult> GetCurrentCompany()
         {
-            string id = HttpContext.Session.GetString(SessionKeyCompany); //get current company id
-            if (string.IsNullOrEmpty(id))
+            string name = HttpContext.Session.GetString(SessionKeyCompany); //get current company id
+            if (string.IsNullOrEmpty(name))
             {
                 _log.LogInformation(RESPONSE_companyNotActive);
                 return Unauthorized();
             }
 
-            Company company = await _db.GetCompanyByID(Guid.Parse(id));
+            Company company = await _db.GetCompanyByName(name);
             if(company == null)
             {
                 _log.LogInformation(RESPONSE_companyNotFound);
@@ -264,7 +267,7 @@ namespace StockApplication.Controllers
                 _log.LogInformation(RESPONSE_userNotFound);
                 return NotFound();
             }
-            return Ok(new ClientUser(user.id, user.username, user.balance));
+            return Ok(new ClientUser(user.username, user.balance));
         }
 
         
@@ -277,6 +280,11 @@ namespace StockApplication.Controllers
         [HttpPost("logIn")]
         public async Task<ActionResult> LogIn(Login login)
         {
+            if (!ModelState.IsValid)
+            {
+                _log.LogInformation("Username or password invalid");
+                return BadRequest();
+            }
             ServerResponse response = await _db.LogIn(login.username, login.password);
             if (!response.Status)
             {
@@ -300,11 +308,11 @@ namespace StockApplication.Controllers
         }
 
         //returns list of stocks certain user own
-        [HttpGet("getStocksForUser/{id}")]
-        public async Task<ActionResult> GetStocksForUser(string id)
+        [HttpGet("getStocksForUser")]
+        public async Task<ActionResult> GetStocksForUser()
         {
             string userid = HttpContext.Session.GetString(SessionKeyUser);
-            if (string.IsNullOrEmpty(userid) && userid != id)
+            if (string.IsNullOrEmpty(userid))
             {
                 _log.LogInformation(RESPONSE_userNotLoggedIn);
                 return Unauthorized();
@@ -322,16 +330,16 @@ namespace StockApplication.Controllers
         }
 
         //get ClientStock object with specific user's value
-        [HttpGet("getUsersValueByID")]
-        public async Task<ActionResult> GetUsersValueByID(string id)
+        [HttpGet("getUserValue")]
+        public async Task<ActionResult> GetUserValue()
         {
             string userid = HttpContext.Session.GetString(SessionKeyUser);
-            if (string.IsNullOrEmpty(userid) && userid != id)
+            if (string.IsNullOrEmpty(userid))
             {
                 _log.LogInformation(RESPONSE_userNotLoggedIn);
                 return Unauthorized();
             }
-            ClientStock stockName = await _db.GetUsersValueByID(id);
+            ClientStock stockName = await _db.GetUsersValueByID(userid);
             if (stockName == null)
             {
                 _log.LogInformation(RESPONSE_userNotFound);
@@ -344,9 +352,18 @@ namespace StockApplication.Controllers
         
 
         //tries to buy stock for user and company in session
-        [HttpGet("buyStock")]
-        public async Task<ActionResult> BuyStock(int amount)
+        [HttpPut("buyStock")]
+        public async Task<ActionResult> BuyStock(StringWrapper wrap)
         {
+            int amount;
+            try
+            {
+                amount = Int32.Parse(wrap.value);
+            }
+            catch
+            {
+                return BadRequest();
+            }
             string userid = HttpContext.Session.GetString(SessionKeyUser);
             string companyid = HttpContext.Session.GetString(SessionKeyCompany);
             if (string.IsNullOrEmpty(userid) && string.IsNullOrEmpty(companyid))
@@ -355,7 +372,7 @@ namespace StockApplication.Controllers
                 return Unauthorized();
             }
             ServerResponse response = await _db.TryToBuyStockForUser(userid, companyid, amount);
-            if(!response.Status == true)
+            if(!response.Status)
             {
                 _log.LogInformation(response.Response);
                 return BadRequest();
@@ -364,18 +381,27 @@ namespace StockApplication.Controllers
         }
 
         //tries to sell stock for user and company in session
-        [HttpGet("sellStock")]
-        public async Task<ActionResult> SellStock(int amount)
+        [HttpPut("sellStock")]
+        public async Task<ActionResult> SellStock(StringWrapper wrap)
         {
+            int amount;
+            try
+            {
+                amount = Int32.Parse(wrap.value);
+            }
+            catch
+            {
+                return BadRequest();
+            }
             string userid = HttpContext.Session.GetString(SessionKeyUser);
-            string companyid = HttpContext.Session.GetString(SessionKeyCompany);
-            if (string.IsNullOrEmpty(userid) && string.IsNullOrEmpty(companyid))
+            string comName = HttpContext.Session.GetString(SessionKeyCompany);
+            if (string.IsNullOrEmpty(userid) && string.IsNullOrEmpty(comName))
             {
                 _log.LogInformation("You have to be logged in to perform this action or No company is currently active");
                 return Unauthorized();
             }
-            ServerResponse response = await _db.TryToSellStockForUser(userid, companyid, amount);
-            if (!response.Status == true)
+            ServerResponse response = await _db.TryToSellStockForUser(userid, comName, amount);
+            if (!response.Status)
             {
                 _log.LogInformation(response.Response);
                 return BadRequest();
@@ -389,13 +415,13 @@ namespace StockApplication.Controllers
         public async Task<ActionResult> GetCurrentStock()
         {
             string userid = HttpContext.Session.GetString(SessionKeyUser);
-            string companyid = HttpContext.Session.GetString(SessionKeyCompany);
-            if (string.IsNullOrEmpty(userid) && string.IsNullOrEmpty(companyid))
+            string comName = HttpContext.Session.GetString(SessionKeyCompany);
+            if (string.IsNullOrEmpty(userid) && string.IsNullOrEmpty(comName))
             {
                 _log.LogInformation("You have to be logged in to perform this action or No company is currently active");
                 return Unauthorized();
             }
-            Stock stock = await _db.GetStockWithUserAndCompany(userid, companyid);
+            Stock stock = await _db.GetStockWithUserAndCompany(userid, comName);
             if(stock == null)
             {
                 _log.LogInformation(RESPONSE_stockNotFound);

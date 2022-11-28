@@ -20,7 +20,7 @@ namespace StockApplication.Code.DAL
         private readonly ILogger _logger;
         private float startBalance = 1000.0F;
         private float startValue = 10.0F;
-        private int saltSize = 20;
+        private int saltSize = 128;
         private Random random;
         private string startValues;
 
@@ -141,9 +141,27 @@ namespace StockApplication.Code.DAL
                 List<ClientUser> clientUsers = new List<ClientUser>();
                 foreach(User user in users)
                 {
-                    clientUsers.Add(new ClientUser(user.id, user.username, user.balance));
+                    clientUsers.Add(new ClientUser(user.username, user.balance));
                 }
                 return clientUsers;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.ToString());
+                return null; //something went wrong
+            }
+        }
+        public async Task<List<ClientCompany>> GetAllClientCompanies()
+        {
+            try
+            {
+                List<Company> companies = await _db.CompanySet.Select(u => u.Clone()).ToListAsync(); //clone all Users saved in UserSet, and converting it to a List
+                List<ClientCompany> coms = new List<ClientCompany>();
+                foreach (Company comp in companies)
+                {
+                    coms.Add(new ClientCompany(comp.name, comp.value, comp.values));
+                }
+                return coms;
             }
             catch (Exception e)
             {
@@ -158,7 +176,11 @@ namespace StockApplication.Code.DAL
             try
             {
                 User user = await GetUserByID(id); //getting a User entity with previous values (ID always stays the same)
-                _logger.LogInformation("User " + user.username);
+                if(newUsername == null)
+                {
+                    _logger.LogInformation("Username for id: " + id + " is null!");
+                    return new ServerResponse(false, "Something went wrong");
+                }
                 if (user.username != newUsername) //if username is updated
                 {
                     if (!(await CheckUsername(newUsername))) //if new username is taken, return false
@@ -611,9 +633,10 @@ namespace StockApplication.Code.DAL
             return await GetStockWithUserAndCompany(user.id, company.id);
         }
         //get stock with string, convert to Guid and call on function line 505: getStockWithUserAndCompany(Guid uid, Guid cid)
-        public async Task<Stock> GetStockWithUserAndCompany(string uid, string cid)
+        public async Task<Stock> GetStockWithUserAndCompany(string uid, string comName)
         {
-            return await GetStockWithUserAndCompany(Guid.Parse(uid), Guid.Parse(cid));
+            Company company = await GetCompanyByName(comName);
+            return await GetStockWithUserAndCompany(Guid.Parse(uid), company.id);
         }
 
         //check if user has stock with a company, return true if true, false if false
@@ -660,7 +683,7 @@ namespace StockApplication.Code.DAL
             {
                 amount += stock.amount;
                 //totalValue += (await GetStockValue(stock));
-                totalValue += amount * stock.value;
+                totalValue += stock.value;
             }
             List<ClientStock> stockList = new List<ClientStock>();
             totalValue += user.balance; //adding user's balance at the end and returning totalvalue

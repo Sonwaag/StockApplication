@@ -10,20 +10,20 @@
                 <label>Username</label>
                 <input class="form-control" formControlName="username" />
                 <p class="alert alert-warning" [hidden]="skjema.controls.username.valid || (skjema.controls.username.pristine && !submitted)">
-                    Username er obligatorisk.
+                    Invalid username.
                 </p>
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input class="form-control" formControlName="password" />
+                <input class="form-control" formControlName="password" type="password"/>
                 <p class="alert alert-warning" [hidden]="skjema.controls.password.valid || (skjema.controls.password.pristine && !submitted)">
-                    Password er obligatorisk.
+                    Invalid password.
                 </p>
             </div>
             <!--Sends company to script with function createUser() when confirm button is pressed-->
             <div class="form-group">
                 <button type="submit" style="margin-right:15px" [disabled]="!skjema.valid" class="btn btn-primary">Registrer</button>
-                <button class="btn btn-primary" routerLink="/">Tilbake</button>
+                <button class="btn btn-primary" routerLink="/">Home</button>
             </div>
         </form>
     </div>

@@ -17,7 +17,7 @@ export class CompaniesComponent {
     constructor(private _http: HttpClient, private router: Router) { }
 
     GetAlleCompanies() {
-        this._http.get<company[]>("api/Stock/")
+        this._http.get<company[]>("api/Stock/getAllCompanies")
             .subscribe(companies => {
                 this.alleCompanies = companies;
             },
@@ -25,10 +25,10 @@ export class CompaniesComponent {
         );
     }
 
-    goToCompany(id: string) {
-        this._http.get("api/Stock/SetCurrentCompany?id=" + id)
+    goToCompany(name: string) {
+        this._http.get("api/Stock/SetCurrentCompany?name=" + name)
             .subscribe(_retur => {
-                console.log("Session set"+ id)
+                console.log("Session set" + name)
                 this.router.navigate(['/company']);
             },
             error => console.log(error)
