@@ -2,8 +2,10 @@
 
 @Component({
     selector: 'app-nav-meny',
-    templateUrl: './nav-meny.component.html'
+    templateUrl: './nav-meny.component.html',
+    styleUrls: ['./nav-meny.component.css']
 })
-export class NavMenuComponent {
 
+export class NavMenuComponent {
+    
 }

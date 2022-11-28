@@ -5,7 +5,7 @@
     </a>
 
     <!--Links-->
-    <ul class="navbar-nav" style="font-size:18px">
+    <ul class="navbar-nav" [class.is-open]="isMenuOpen" style="font-size:18px" id="navtekst">
         <!--Homepage-->
         <li class="nav-item">
             <!--Routering and displaying active page-->
@@ -33,7 +33,7 @@
         </li>
     </ul>
     <!--Creating a new list aligned to the right-->
-    <ul class="navbar-nav ml-auto" style="font-size:18px">
+    <ul class="navbar-nav ml-auto" style="font-size:18px" id="navtekst">
         <!--Log-in Page-->
         <li class="nav-item ">
             <!--Routering and displaying active page-->
@@ -45,5 +45,24 @@
             <a class="nav-link" routerLinkActive="active" routerLink="/profile"><i class="fa fa-user-circle"></i>    Profile</a>
         </li>
     </ul>
+
+    <input type="checkbox" class="openSidebarMenu ml-auto" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+    </label>
+
+        <div id="sidebarMenu" class="bg-dark">
+            <div class="main-content-wrapper">
+                <a class="nav-link" routerLinkActive="active" routerLink="/home">  &nbsp;&nbsp;Home</a>
+                <a class="nav-link" routerLinkActive="active" routerLink="/createuser">  &nbsp;&nbsp;Create User</a>
+                <a class="nav-link" routerLinkActive="active" routerLink="/createcompany">  &nbsp;&nbsp;Create Company</a>
+                <a class="nav-link" routerLinkActive="active" routerLink="/companies">  &nbsp;&nbsp;Companies</a>
+                <a class="nav-link" routerLinkActive="active" routerLink="/leaderboard">  &nbsp;&nbsp;Leaderboard</a>
+                <a class="nav-link" routerLinkActive="active" routerLink="/login">  &nbsp;&nbsp;Sign in</a>
+                <a class="nav-link" routerLinkActive="active" routerLink="/profile">  &nbsp;&nbsp;Profile</a>
+            </div>
+        </div>
 </nav>
 <br/>
