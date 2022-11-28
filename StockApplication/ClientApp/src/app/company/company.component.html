@@ -1,19 +1,22 @@
 ﻿<div class="main" style="margin-bottom:10vh">
     <h1>{{company.name}}</h1>
+    <br />
 
     <div id="userinfo">
-        <h5>Current balance: <b>{{ user.balance }}$</b></h5>
+        <h5>Your current balance: <b>{{ user.balance }}$</b></h5>
         <h5>Owned shares: <b>{{ clientStock.amount }}</b></h5>
         <p class="alert alert-danger" [hidden]="hidden">{{errTxt}}</p>
-        <input type="number" name="amount" id="amount" value="1" min="1" max="999" />
-        <button class="btn btn-primary" (click)="buyStock()">Buy</button>
-        <button class="btn btn-primary" (click)="sellStock()">Sell</button>
+        <input type="number" style="margin-bottom:5px;width:112px" name="amount" id="amount" value="1" min="1" max="999" />
+        <br />
+        <button class="btn btn-primary" (click)="buyStock()">Buy</button>&nbsp;
+        <button class="btn btn-danger" (click)="sellStock()">Sell</button>
 
     </div>
 
     <div id="divChart">
         <canvas #lineChart id="myChart">{{ chart }}</canvas>
     </div>
+    <br />
 
     <div id="info">
         <h3>Current value: <b>{{ company.value }}$</b></h3>
