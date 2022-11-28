@@ -32,7 +32,7 @@ export class CreateCompanyComponent {
     validering = {
         
         companyName: [
-            null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{3,32}")])
+            null, Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZøæåØÆÅ\\-. ]{3,32}")])
         ]
     }
 
