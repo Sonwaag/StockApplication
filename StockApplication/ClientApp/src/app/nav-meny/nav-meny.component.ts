@@ -1,5 +1,5 @@
 ﻿import { Component } from '@angular/core'
-
+import { clientUser } from '../TsClasses';
 @Component({
     selector: 'app-nav-meny',
     templateUrl: './nav-meny.component.html',
@@ -7,5 +7,16 @@
 })
 
 export class NavMenuComponent {
+    public signtext: string;
+    txt1: string = "Sign-in";
+    txt2: string = "Sign-out";
     
+
+    setLogin() {
+        this.signtext = this.txt1;
+    }
+    setLogout() {
+        this.signtext = this.txt2;
+    }
+
 }

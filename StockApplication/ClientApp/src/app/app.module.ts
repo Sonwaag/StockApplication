@@ -16,6 +16,7 @@ import { LeaderboardComponent } from './leaderboard/leaderbord.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CompanyComponent } from './company/company.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { WildComponent } from './wild/wild.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { UpdateUserComponent } from './update-user/update-user.component';
       LeaderboardComponent,
       ProfileComponent,
       CompanyComponent,
-      UpdateUserComponent
+      UpdateUserComponent,
+      WildComponent
 
   ],
   imports: [

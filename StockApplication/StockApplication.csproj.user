@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup />
+  <PropertyGroup>
+    <NameOfLastUsedPublishProfile>C:\Users\sondr\OneDrive\Documents\GitHub\StockApplication\StockApplication\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
+  </PropertyGroup>
   <ItemGroup>
     <TypeScriptCompile Update="ClientApp\src\app\update-user\update-user.component.ts">
       <SubType>Code</SubType>
@@ -46,7 +48,11 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <TypeScriptCompile Update="ClientApp\src\app\wild\wild.component.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+  </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Update="ClientApp\src\app\footer-meny\footer-meny.component.ts">
       <SubType>Code</SubType>

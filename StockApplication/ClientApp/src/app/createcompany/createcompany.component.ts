@@ -2,6 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { clientUser } from '../TsClasses';
 
 
 @Component({
@@ -12,6 +13,22 @@ export class CreateCompanyComponent {
     public errTxt: string;
     public hidden: boolean = true;
 
+    ngOnInit() {
+        this.getCurrentUser();
+    }
+    getCurrentUser() {
+        this.http.get<clientUser>("api/Stock/getCurrentUser")
+            .subscribe(user => {
+                
+            },
+                error => {
+                    console.log(error);
+                    if (error.status === 401 || error.status === 404) {
+                        this.router.navigate(['/login']);
+                    }
+                }
+            );
+    };
     validering = {
         
         companyName: [
