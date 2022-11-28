@@ -148,7 +148,6 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 @media screen and (min-width: 1111px){
     #sidebarMenu {
-        font-size:100px;
-        background-color:blue;
+        display: none !important;
     }
 }
