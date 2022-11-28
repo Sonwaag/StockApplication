@@ -6,9 +6,12 @@
     }
 }
 
+
 a.active {
-  
+  border-bottom:solid;
+  opacity:100%;
 }
+
 
 #sidebarMenu {
     height: auto;
@@ -18,7 +21,6 @@ a.active {
     width: 100%;
     z-index: 100;
     transform: translateY(-171px);
-    /*change here related your menu height*/
 }
 
 .main-content-wrapper a {
@@ -141,5 +143,12 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
     .navbar-brand {
         width: 99%;
+    }
+}
+
+@media screen and (min-width: 1111px){
+    #sidebarMenu {
+        font-size:100px;
+        background-color:blue;
     }
 }
