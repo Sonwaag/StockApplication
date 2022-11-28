@@ -111,7 +111,7 @@ namespace StockApplication.Controllers
             if (user == null)
             {
                 _log.LogInformation(response.Response);
-                return BadRequest();
+                return NotFound();
             }
             HttpContext.Session.SetString(SessionKeyUser, user.id.ToString());
 
@@ -194,11 +194,11 @@ namespace StockApplication.Controllers
             return Ok();
         }
 
-        public async Task<bool> DeleteCompany(string id) //not yet implemented
+        /*public async Task<bool> DeleteCompany(string id) //not yet implemented
         {
             return false;
             //return await _db.DeleteCompany(id);
-        }
+        }*/
 
         private const string SessionKeyCompany = "_currentCompany";
         //sets a new company in session
@@ -366,7 +366,7 @@ namespace StockApplication.Controllers
             }
             string userid = HttpContext.Session.GetString(SessionKeyUser);
             string companyid = HttpContext.Session.GetString(SessionKeyCompany);
-            if (string.IsNullOrEmpty(userid) && string.IsNullOrEmpty(companyid))
+            if (string.IsNullOrEmpty(userid) || string.IsNullOrEmpty(companyid))
             {
                 _log.LogInformation("You have to be logged in to perform this action or No company is currently active");
                 return Unauthorized();
@@ -395,7 +395,7 @@ namespace StockApplication.Controllers
             }
             string userid = HttpContext.Session.GetString(SessionKeyUser);
             string comName = HttpContext.Session.GetString(SessionKeyCompany);
-            if (string.IsNullOrEmpty(userid) && string.IsNullOrEmpty(comName))
+            if (string.IsNullOrEmpty(userid) || string.IsNullOrEmpty(comName))
             {
                 _log.LogInformation("You have to be logged in to perform this action or No company is currently active");
                 return Unauthorized();
