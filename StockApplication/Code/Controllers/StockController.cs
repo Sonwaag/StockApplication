@@ -81,7 +81,6 @@ namespace StockApplication.Controllers
             string id = HttpContext.Session.GetString(SessionKeyUser);
             ServerResponse response = await _db.UpdateUser(id, wrap.value);
             bool updated = response.Status;
-
             if (!updated)
             {
                 _log.LogInformation(response.Response);
@@ -107,7 +106,6 @@ namespace StockApplication.Controllers
                 return BadRequest();
             }
             User user = await _db.GetUserByUsername(login.username);
-            _log.LogInformation(user.id.ToString());
             if (user == null)
             {
                 _log.LogInformation(response.Response);

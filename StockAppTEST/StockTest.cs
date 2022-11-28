@@ -201,6 +201,26 @@ namespace StockAppTEST
             Assert.Equal((int)HttpStatusCode.BadRequest, result.StatusCode);
         }
         [Fact]
+        public async Task CreateUser_dbOK_UserNotFound() //should never happen but just in case
+        {
+            //Arrange
+            Login newLogin = new Login("luddebassen", "luddebassen");
+            ServerResponse serverRespons = new ServerResponse(true);
+
+            mockRep.Setup(u => u.CreateUser(newLogin.username, newLogin.password)).ReturnsAsync(serverRespons);
+            mockRep.Setup(u => u.GetUserByUsername(newLogin.username)).ReturnsAsync((User)null);
+
+            var stockController = new StockController(mockRep.Object, mockLog.Object);
+
+            //Act
+            var result = (NotFoundResult)await stockController.CreateUser(newLogin);
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.Equal((int)HttpStatusCode.NotFound, result.StatusCode);
+
+        }
+        [Fact]
         public async Task LogIn_dbError()
         {
             //Arrange
@@ -1037,7 +1057,74 @@ namespace StockAppTEST
             Assert.Equal((int)HttpStatusCode.OK, result.StatusCode);
             Assert.Equal(JsonConvert.SerializeObject(result.Value), JsonConvert.SerializeObject(clientStock));
         }
+        [Fact]
+        public async Task UpdateUserLogInOk()
+        {
+            //Arrange
+            StringWrapper wrap = new StringWrapper("username");
+            string username = wrap.value;
+            string id = Guid.NewGuid().ToString();
+            ServerResponse serverRespons = new ServerResponse(true);
 
+            mockRep.Setup(u => u.UpdateUser(id, username)).ReturnsAsync(serverRespons);
+
+            var stockController = new StockController(mockRep.Object, mockLog.Object);
+
+            mockSession[SessionKeyUser] = id;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            stockController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var result = (OkResult)await stockController.UpdateUser(wrap);
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.Equal((int)HttpStatusCode.OK, result.StatusCode);
+            
+        }
+        [Fact]
+        public async Task UpdateUserLogInNotOk()
+        {
+            //Arrange
+            //no mockRep setup because if user is not logged in the updateUser-function in the repo is not called and will return null
+            StringWrapper wrap = new StringWrapper("username");
+
+            var stockController = new StockController(mockRep.Object, mockLog.Object);
+
+            mockSession[SessionKeyUser] = _notLoggedIn;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            stockController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var result = (UnauthorizedResult)await stockController.UpdateUser(wrap);
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.Equal((int)HttpStatusCode.Unauthorized, result.StatusCode);
+            
+        }
+        [Fact]
+        public async Task UpdateUserLogInOk_DBerror()
+        {
+            //Arrange
+            StringWrapper wrap = new StringWrapper("username");
+            ServerResponse serverRespons = new ServerResponse(false, "Username is the same!");
+            mockRep.Setup(u => u.UpdateUser(It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync(serverRespons);
+
+            var stockController = new StockController(mockRep.Object, mockLog.Object);
+
+            mockSession[SessionKeyUser] = SessionKeyUser;
+            mockHttpContext.Setup(s => s.Session).Returns(mockSession);
+            stockController.ControllerContext.HttpContext = mockHttpContext.Object;
+
+            //Act
+            var result = (BadRequestResult)await stockController.UpdateUser(wrap);
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.Equal((int)HttpStatusCode.BadRequest, result.StatusCode);
+            
+        }
 
 
     }
