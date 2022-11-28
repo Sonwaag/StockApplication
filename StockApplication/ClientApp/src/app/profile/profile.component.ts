@@ -11,6 +11,7 @@ export class ProfileComponent {
     public user: clientUser;
     public totalvalue: clientStock;
     public list: Array<clientStock>;
+    public errTxt: string;
 
     constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) { }
 
@@ -22,10 +23,15 @@ export class ProfileComponent {
         this.http.get<clientUser>("api/Stock/getCurrentUser")
             .subscribe(user => {
                 this.user = user;
-                this.getUsersTotalValue(); 
+                this.getUsersTotalValue();
                 this.getUsersStocks();
             },
-                error => console.log(error)
+                error => {
+                    console.log(error);
+                    if (error.status === 401 || error.status === 404) {
+                        this.router.navigate(['/login']);
+                    }
+                }
             );
     };
     getUsersTotalValue() {
@@ -33,7 +39,13 @@ export class ProfileComponent {
             .subscribe(totalvalue => {
                 this.totalvalue = totalvalue;
             },
-                error => console.log(error)
+                error => {
+                    console.log(error);
+                    if (error.status === 401 || error.status === 404) {
+                        this.errTxt = "Could not find current user";
+                    }
+                }
+
             );
     };
     getUsersStocks() {
@@ -41,7 +53,12 @@ export class ProfileComponent {
             .subscribe(list => {
                 this.list = list;
             },
-                error => console.log(error)
+                error => {
+                    console.log(error);
+                    if (error.status === 401) {
+                        this.router.navigate(['/login']);
+                    }
+                }
             );
     };
 
@@ -50,7 +67,15 @@ export class ProfileComponent {
             .subscribe(_retur => {
                 this.router.navigate(['/']);
             },
-                error => console.log(error)
+                error => {
+                    console.log(error);
+                    if (error.status === 401) {
+                        this.router.navigate(['/login']);
+                    }
+                    if (error.status === 400) {
+                        this.errTxt = "Could not delete user";
+                    }
+                }
             );
     };
 
@@ -59,7 +84,10 @@ export class ProfileComponent {
             .subscribe(_retur => {
                 this.router.navigate(['/']);
             },
-                error => console.log(error)
+                error => {
+                    console.log(error);
+                    this.errTxt = "Could not log out. Sorry you're stuck here :)";
+                }
             );
     };
    

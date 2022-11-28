@@ -9,12 +9,13 @@ import { Router } from '@angular/router';
 })
 export class CreateCompanyComponent {
     skjema: FormGroup;
-    
+    public errTxt: string;
+    public hidden: boolean = true;
 
     validering = {
         
         companyName: [
-            null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{2,30}")])
+            null, Validators.compose([Validators.required, Validators.pattern("[a-zA-ZøæåØÆÅ\\-. ]{3,32}")])
         ]
     }
 
@@ -35,7 +36,16 @@ export class CreateCompanyComponent {
             .subscribe(_retur => {
                 this.router.navigate(['/']);
             },
-            error => console.log(error)
+                error => {
+                    console.log(error);
+                    if (error.status === 401) {
+                        this.router.navigate(['/login']);
+                    }
+                    else if (error.status === 400) {
+                        this.errTxt = "Company already exists!";
+                        this.hidden = false;
+                    }
+                }
             );
     };
 }

@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 })
 export class UpdateUserComponent {
     skjema: FormGroup;
-    
+    public hidden: boolean = true;
+    public errTxt: string;
 
     validering = {
 
@@ -32,9 +33,18 @@ export class UpdateUserComponent {
 
         this.http.put("api/Stock/updateUser", obj)
             .subscribe(_retur => {
-                this.router.navigate(['/']);
+                this.router.navigate(['/profile']);
             },
-            error => console.log(error)
+                error => {
+                    console.log(error);
+                    if (error.status === 401) {
+                        this.router.navigate(['/login']);
+                    }
+                    else if (error.status === 400) {
+                        this.errTxt = "Username is taken!";
+                        this.hidden = false;
+                    }
+                }
 
             );
     };

@@ -10,6 +10,7 @@ import { clientStock, clientUser } from '../TsClasses';
 })
 
 export class CompanyComponent {
+    public hidden: boolean = true;
     public company: clientCompany;
     public chart: any;
     public change: string;
@@ -17,6 +18,8 @@ export class CompanyComponent {
     public clientStock: clientStock;
     public user: clientUser;
     public value: number;
+    public errTxt: string;
+    
     
     @ViewChild('lineChart', { static: true }) private chartRef;
     //@ViewChild('input', { static: true }) input: ElementRef;
@@ -38,7 +41,12 @@ export class CompanyComponent {
                 this.createChart(company);
                 this.valueInfo(company);
             },
-            error => console.log(error)
+                error => {
+                    console.log(error)
+                    if (error.status === 401 || error.status === 404) {
+                        this.router.navigate(['/companies']);
+                    }
+                }
         );
     }
 
@@ -78,7 +86,10 @@ export class CompanyComponent {
             .subscribe(stock => {
                 this.clientStock = stock;
             },
-                error => console.log(error)
+                error => {
+                    console.log(error);
+                    this.router.navigate(['/login']);
+                }
         );
     }
 
@@ -87,7 +98,10 @@ export class CompanyComponent {
             .subscribe(user => {
                 this.user = user;
             },
-                error => console.log(error)
+                error => {
+                    console.log(error);
+                    this.router.navigate(['/login']);
+                }
             );
     }
     buyStock() {
@@ -100,8 +114,18 @@ export class CompanyComponent {
                 this.getStock();
                 this.getUser();
                 this.getCurrentCompany();
+                this.hidden = true;
             },
-                error => console.log(error)
+                error => {
+                    console.log(error);
+                    if (error.status === 401) {
+                        this.router.navigate(['/login']);
+                    }
+                    else if (error.status === 400) {
+                        this.errTxt = "Can not buy this amount of shares!";
+                        this.hidden = false;
+                    }
+                }
             );
     }
 
@@ -114,8 +138,18 @@ export class CompanyComponent {
                 this.getStock();
                 this.getUser();
                 this.getCurrentCompany();
+                this.hidden = true;
             },
-                error => console.log(error)
+                error => {
+                    console.log(error);
+                    if (error.status === 401) {
+                        this.router.navigate(['/login']);
+                    }
+                    else if (error.status === 400) {
+                        this.errTxt = "Can not sell this amount of shares!";
+                        this.hidden = false;
+                    }
+                }
             );
     }
    

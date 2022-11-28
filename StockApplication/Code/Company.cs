@@ -9,7 +9,7 @@ namespace StockApplication.Code
     public class Company
     {
         public Guid id { get; set; }
-        [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,50}")]
+        [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{3,32}")]
         public string name { get; set; }
         public float value { get; set; }
         public string values { get; set; }

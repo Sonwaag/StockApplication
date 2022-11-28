@@ -16,12 +16,12 @@
                     <th>Total Value</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let user of allUsers">
+            <tbody *ngFor="let user of allUsers; let i = index">
                 <tr>
-                    <td>1++</td>
+                    <td>{{i+1}}</td>
                     <td>{{user.name}}</td>
                     <td>{{user.amount}}</td>
-                    <td>{{user.value}}</td>
+                    <td>{{user.value}}$</td>
                 </tr>
             </tbody>
         </table>

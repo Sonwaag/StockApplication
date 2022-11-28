@@ -4,7 +4,8 @@
     <div id="userinfo">
         <h5>Current balance: <b>{{ user.balance }}$</b></h5>
         <h5>Owned shares: <b>{{ clientStock.amount }}</b></h5>
-        <input type="number" name="amount" id="amount"/>
+        <p class="alert alert-danger" [hidden]="hidden">{{errTxt}}</p>
+        <input type="number" name="amount" id="amount" value="1" min="1" max="999" />
         <button class="btn btn-primary" (click)="buyStock()">Buy</button>
         <button class="btn btn-primary" (click)="sellStock()">Sell</button>
 

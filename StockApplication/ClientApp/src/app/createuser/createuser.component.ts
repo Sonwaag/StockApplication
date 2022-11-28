@@ -9,6 +9,8 @@ import { user } from '../userClass';
 })
 export class CreateUserComponent {
     skjema: FormGroup;
+    public errTxt: string;
+    public hidden: boolean = true;
 
     validering = {
         
@@ -33,9 +35,15 @@ export class CreateUserComponent {
         
         this.http.post("api/Stock/createUser", inndata)
           .subscribe(_retur => {
-              this.router.navigate(['/']);
+              this.router.navigate(['/profile']);
           },
-          error => console.log(error)
+              error => {
+                  console.log(error);
+                  if (error.status === 400) {
+                      this.errTxt = "Username is already taken!";
+                      this.hidden = false;
+                  }
+              }
           );
     };
 }

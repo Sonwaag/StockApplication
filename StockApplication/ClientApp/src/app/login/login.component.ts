@@ -9,6 +9,8 @@ import { user } from '../userClass';
 })
 export class LogInComponent {
     skjema: FormGroup;
+    public errTxt: string;
+    public hidden: boolean = true;
 
     validering = {
 
@@ -34,9 +36,15 @@ export class LogInComponent {
 
         this.http.post("api/Stock/logIn", inndata)
             .subscribe(_retur => {
-                this.router.navigate(['/']);
+                this.router.navigate(['/profile']);
             },
-                error => console.log(error)
+                error => {
+                    console.log(error);
+                    if (error.status === 400 || error.status === 404) {
+                        this.errTxt = "Username or password was wrong!";
+                        this.hidden = false;
+                    }
+                }
             );
     };
 }

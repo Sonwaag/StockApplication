@@ -23,12 +23,13 @@
             <!--Sends company to script with function createUser() when confirm button is pressed-->
             <div class="form-group">
                 <br />
+                <p class="alert alert-danger" [hidden]="hidden">{{errTxt}}</p>
                 <button type="submit" style="margin-right:15px" [disabled]="!skjema.valid" class="btn btn-primary">Sign in</button>
                 <button class="btn btn-primary" routerLink="/">Home</button>
             </div>
             <br />
             <div class="form-group">
-                <p class="" style="font-size:17px; align-content:center;"><i>You don't have a user?</i></p>
+                <p class="" style="font-size:17px; align-content:center;"><i>Don't have a user?</i></p>
                 <button class="btn btn-primary" routerLink="/createuser">Create User</button>
             </div>
         </form>

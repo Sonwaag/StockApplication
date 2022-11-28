@@ -636,6 +636,10 @@ namespace StockApplication.Code.DAL
         public async Task<Stock> GetStockWithUserAndCompany(string uid, string comName)
         {
             Company company = await GetCompanyByName(comName);
+            if(company == null)
+            {
+                return null;
+            }
             return await GetStockWithUserAndCompany(Guid.Parse(uid), company.id);
         }
 
