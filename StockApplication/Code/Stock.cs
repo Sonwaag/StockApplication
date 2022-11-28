@@ -11,7 +11,7 @@ namespace StockApplication.Code
         
         public Guid Userid { get; set; }
         public Guid Companyid { get; set; }
-        [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}")]
+        [RegularExpression(@"[0-9a-zA-ZæøåÆØÅ. \-]{2,20}")]
         public string companyName { get; set; }
 
         public virtual User User { get; set; }

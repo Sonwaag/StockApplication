@@ -9,7 +9,7 @@ namespace StockApplication.Code
     public class ServerResponse
     {
         public bool Status { get; set; }
-        [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,30}")]
+        [RegularExpression(@"[0-9a-zA-ZæøåÆØÅ. \-]{2,30}")]
         public string Response { get; set; }
         public ServerResponse(bool Status, string Response)
         {

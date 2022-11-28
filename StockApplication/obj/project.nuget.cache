@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kVb0X3soxAOPyLCwHAAKfxb+KGwJe2rzuxHM7mFG9ZxbJTnTvsqfhb9O4qYjMqRNd6gohloGrCUsRy5Q+xChUg==",
+  "dgSpecHash": "+CaS0YfB/NREEqZMVmt4kvsrtvN1XLDkIIFz6ScBY3H6AFIrgb3UfyHFWuqktodWFUnS4eO6ABbQW4MknFsBwQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sondr\\OneDrive\\Documents\\GitHub\\StockApplication\\StockApplication\\StockApplication.csproj",
+  "projectFilePath": "D:\\VSCode\\StockApplication2\\StockApplication\\StockApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sondr\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\sondr\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

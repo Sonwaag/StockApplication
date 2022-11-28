@@ -9,7 +9,7 @@ namespace StockApplication.Code
     
     public class ClientStock
     {
-        [RegularExpression(@"[a-zA-ZæøåÆØÅ. \-]{2,20}")]
+        [RegularExpression(@"[0-9a-zA-ZæøåÆØÅ. \-]{2,20}")]
         public string name { get; set; }
         public int amount { get; set; }
         public float value { get; set; }

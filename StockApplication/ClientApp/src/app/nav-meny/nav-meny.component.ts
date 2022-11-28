@@ -11,7 +11,9 @@ export class NavMenuComponent {
     txt1: string = "Sign-in";
     txt2: string = "Sign-out";
     
-
+    ngOnInit() {
+        this.setLogin();
+    }
     setLogin() {
         this.signtext = this.txt1;
     }
