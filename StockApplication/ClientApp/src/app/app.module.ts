@@ -17,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { CompanyComponent } from './company/company.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { WildComponent } from './wild/wild.component';
+import { FilterPipe } from './Pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { WildComponent } from './wild/wild.component';
       ProfileComponent,
       CompanyComponent,
       UpdateUserComponent,
-      WildComponent
+      WildComponent,
+      FilterPipe
 
   ],
   imports: [

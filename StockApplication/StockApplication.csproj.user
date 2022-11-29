@@ -4,6 +4,11 @@
     <NameOfLastUsedPublishProfile>C:\Users\sondr\OneDrive\Documents\GitHub\StockApplication\StockApplication\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ItemGroup>
+    <TypeScriptCompile Update="ClientApp\src\app\Pipe.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+  </ItemGroup>
+  <ItemGroup>
     <TypeScriptCompile Update="ClientApp\src\app\update-user\update-user.component.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>

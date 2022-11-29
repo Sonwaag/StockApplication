@@ -50,6 +50,7 @@
     <None Remove="ClientApp\src\app\home\home.component.ts" />
     <None Remove="ClientApp\src\app\leaderboard\leaderbord.component.ts" />
     <None Remove="ClientApp\src\app\nav-meny\nav-meny.component.ts" />
+    <None Remove="ClientApp\src\app\Pipe.ts" />
     <None Remove="ClientApp\src\app\profile\profile.component.ts" />
     <None Remove="ClientApp\src\app\swappage\swappage.component.ts" />
     <None Remove="ClientApp\src\app\TsClasses.ts" />

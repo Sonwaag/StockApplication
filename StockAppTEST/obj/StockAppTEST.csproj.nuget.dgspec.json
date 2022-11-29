@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\krist\\source\\repos\\StockApplication2\\StockAppTEST\\StockAppTEST.csproj": {}
+    "D:\\VSCode\\StockApplication2\\StockAppTEST\\StockAppTEST.csproj": {}
   },
   "projects": {
-    "C:\\Users\\krist\\source\\repos\\StockApplication2\\StockApplication\\StockApplication.csproj": {
+    "D:\\VSCode\\StockApplication2\\StockApplication\\StockApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\krist\\source\\repos\\StockApplication2\\StockApplication\\StockApplication.csproj",
+        "projectUniqueName": "D:\\VSCode\\StockApplication2\\StockApplication\\StockApplication.csproj",
         "projectName": "StockApplication",
-        "projectPath": "C:\\Users\\krist\\source\\repos\\StockApplication2\\StockApplication\\StockApplication.csproj",
-        "packagesPath": "C:\\Users\\krist\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\krist\\source\\repos\\StockApplication2\\StockApplication\\obj\\",
+        "projectPath": "D:\\VSCode\\StockApplication2\\StockApplication\\StockApplication.csproj",
+        "packagesPath": "C:\\Users\\sondr\\.nuget\\packages\\",
+        "outputPath": "D:\\VSCode\\StockApplication2\\StockApplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\krist\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sondr\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,8 +95,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -108,21 +107,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.412\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\krist\\source\\repos\\StockApplication2\\StockAppTEST\\StockAppTEST.csproj": {
+    "D:\\VSCode\\StockApplication2\\StockAppTEST\\StockAppTEST.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\krist\\source\\repos\\StockApplication2\\StockAppTEST\\StockAppTEST.csproj",
+        "projectUniqueName": "D:\\VSCode\\StockApplication2\\StockAppTEST\\StockAppTEST.csproj",
         "projectName": "StockAppTEST",
-        "projectPath": "C:\\Users\\krist\\source\\repos\\StockApplication2\\StockAppTEST\\StockAppTEST.csproj",
-        "packagesPath": "C:\\Users\\krist\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\krist\\source\\repos\\StockApplication2\\StockAppTEST\\obj\\",
+        "projectPath": "D:\\VSCode\\StockApplication2\\StockAppTEST\\StockAppTEST.csproj",
+        "packagesPath": "C:\\Users\\sondr\\.nuget\\packages\\",
+        "outputPath": "D:\\VSCode\\StockApplication2\\StockAppTEST\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\krist\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sondr\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -136,8 +135,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\krist\\source\\repos\\StockApplication2\\StockApplication\\StockApplication.csproj": {
-                "projectPath": "C:\\Users\\krist\\source\\repos\\StockApplication2\\StockApplication\\StockApplication.csproj"
+              "D:\\VSCode\\StockApplication2\\StockApplication\\StockApplication.csproj": {
+                "projectPath": "D:\\VSCode\\StockApplication2\\StockApplication\\StockApplication.csproj"
               }
             }
           }
@@ -187,8 +186,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -197,7 +195,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.412\\RuntimeIdentifierGraph.json"
         }
       }
     }
