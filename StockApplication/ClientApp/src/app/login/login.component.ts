@@ -10,20 +10,20 @@ import { user } from '../userClass';
 export class LogInComponent {
     skjema: FormGroup;
     public errTxt: string;
-    public hidden: boolean = true;
+    public hidden: boolean = true; //error text box hidden
 
     validering = {
 
         username: [
-            null, Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZøæåØÆÅ\\-. ]{3,12}")])
+            null, Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZøæåØÆÅ\\-. ]{3,12}")]) //all characters between 3 and 12 
         ],
         password: [
-            null, Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZøæåØÆÅ\\-. ]{8,32}")])
+            null, Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZøæåØÆÅ\\-. ]{8,32}")]) //all characters between 8 and 32 
         ]
     }
 
     constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) {
-        this.skjema = fb.group(this.validering);
+        this.skjema = fb.group(this.validering); //validate
     }
 
 
@@ -32,17 +32,17 @@ export class LogInComponent {
     }
 
     logIn() {
-        var inndata = { username: this.skjema.value.username, password: this.skjema.value.password }
+        var inndata = { username: this.skjema.value.username, password: this.skjema.value.password } //create object matching login.cs class = string username, string password
 
-        this.http.post("api/Stock/logIn", inndata)
+        this.http.post("api/Stock/logIn", inndata) //try to logIn with username and password
             .subscribe(_retur => {
-                this.router.navigate(['/profile']);
+                this.router.navigate(['/profile']); //on success return to profile
             },
                 error => {
                     console.log(error);
-                    if (error.status === 400 || error.status === 404) {
+                    if (error.status === 400 || error.status === 404) { //Unauthorized or NotFound, username or password is wrong
                         this.errTxt = "Username or password was wrong!";
-                        this.hidden = false;
+                        this.hidden = false; //show error box
                     }
                 }
             );

@@ -10650,11 +10650,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ludvi\\Source\\Repos\\StockApplication15\\StockAppTEST\\StockAppTEST.csproj",
+      "projectUniqueName": "C:\\Users\\ludvi\\source\\repos\\StockApplication15\\StockAppTEST\\StockAppTEST.csproj",
       "projectName": "StockAppTEST",
-      "projectPath": "C:\\Users\\ludvi\\Source\\Repos\\StockApplication15\\StockAppTEST\\StockAppTEST.csproj",
+      "projectPath": "C:\\Users\\ludvi\\source\\repos\\StockApplication15\\StockAppTEST\\StockAppTEST.csproj",
       "packagesPath": "C:\\Users\\ludvi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ludvi\\Source\\Repos\\StockApplication15\\StockAppTEST\\obj\\",
+      "outputPath": "C:\\Users\\ludvi\\source\\repos\\StockApplication15\\StockAppTEST\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ludvi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10671,8 +10671,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\ludvi\\Source\\Repos\\StockApplication15\\StockApplication\\StockApplication.csproj": {
-              "projectPath": "C:\\Users\\ludvi\\Source\\Repos\\StockApplication15\\StockApplication\\StockApplication.csproj"
+            "C:\\Users\\ludvi\\source\\repos\\StockApplication15\\StockApplication\\StockApplication.csproj": {
+              "projectPath": "C:\\Users\\ludvi\\source\\repos\\StockApplication15\\StockApplication\\StockApplication.csproj"
             }
           }
         }

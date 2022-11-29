@@ -16,6 +16,7 @@
                     <th>Total Value</th>
                 </tr>
             </thead>
+            <!--For loop to display all users in table, with increasing index to get leaderboard placement-->
             <tbody *ngFor="let user of allUsers; let i = index">
                 <tr>
                     <td>{{i+1}}</td>

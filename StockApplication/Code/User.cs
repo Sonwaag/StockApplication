@@ -11,7 +11,7 @@ namespace StockApplication.Code
         public Guid id { get; set; }
         [RegularExpression(@"[0-9a-zA-ZæøåÆØÅ. \-]{2,20}")]
         public string username { get; set; }
-        public string password { get; set; }
+        public string password { get; set; } //password is hashed
         public string salt { get; set; }
         public float balance { get; set; }
         public virtual ICollection<Stock> stocks { get; private set; }

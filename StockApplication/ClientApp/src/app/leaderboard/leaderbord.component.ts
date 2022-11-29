@@ -17,7 +17,7 @@ export class LeaderboardComponent {
     constructor(private _http: HttpClient, private router: Router) { }
 
     GetAlleUsers() {
-        this._http.get<clientStock[]>("api/stock/getUsersValue")
+        this._http.get<clientStock[]>("api/stock/getUsersValue") //get list of all Users value to display them in a leaderboard
             .subscribe(users => {
                 this.allUsers = users;
             },

@@ -14,7 +14,8 @@
                     <th>Value</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let company of alleCompanies">
+            <!-- for loop to display all companies in a table, if you click on a company name you will be directed to company individual site-->
+            <tbody *ngFor="let company of alleCompanies"> 
                 <tr>
                     <td><a class="link-primary" (click)="goToCompany(company.name)">{{company.name}}</a></td>
                     <td>{{company.value}}$</td>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PQANT+OKg/EdIL9T70bdaEpuICfULczVzU3ILILvHxzUsJH0QCt59S1CWava6ZpGt582BjwBxE8z4bFrASyotw==",
+  "dgSpecHash": "WxCvmRm83zY6wkz28pOsZhm6IUGT0Pjzd0YhjFzGsLdkWnkd385RWsMmqiEodwv6xVGIMQ7o/MbLruYAS85www==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ludvi\\Source\\Repos\\StockApplication15\\StockAppTEST\\StockAppTEST.csproj",
+  "projectFilePath": "C:\\Users\\ludvi\\source\\repos\\StockApplication15\\StockAppTEST\\StockAppTEST.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ludvi\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\ludvi\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",

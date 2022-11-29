@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
     templateUrl: 'companies.component.html'
 })
 export class CompaniesComponent {
-    public alleCompanies: Array<company>;
+    public alleCompanies: Array<company>; //init of array
 
     ngOnInit() {
         this.GetAlleCompanies();
@@ -16,20 +16,19 @@ export class CompaniesComponent {
     
     constructor(private _http: HttpClient, private router: Router) { }
 
-    GetAlleCompanies() {
+    GetAlleCompanies() { //getting list of allCompanies and saving them in an company[] array
         this._http.get<company[]>("api/Stock/getAllCompanies")
             .subscribe(companies => {
-                this.alleCompanies = companies;
+                this.alleCompanies = companies; //updating array -> html can access with {{ alleCompanies }}
             },
             error => console.log(error)
         );
     }
 
-    goToCompany(name: string) {
-        this._http.get("api/Stock/SetCurrentCompany?name=" + name)
+    goToCompany(name: string) { //Redirect to company user clicked on
+        this._http.get("api/Stock/SetCurrentCompany?name=" + name) //setting sesion
             .subscribe(_retur => {
-                console.log("Session set" + name)
-                this.router.navigate(['/company']);
+                this.router.navigate(['/company']); //navigating to company component
             },
             error => console.log(error)
             );

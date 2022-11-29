@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DCFIQf600dvTdhhQrE5FMxJ/oL5dVr2nVtVBxfOhSxEsVV6H6Jc+aytrpPogFYtCKsR1DRLLAehmR3z9dbv/Cw==",
+  "dgSpecHash": "6tuhpS+Q3m2U/shkr5uqHHwyhJTS8RXqMIAlUk5uy63RRAPoSuQIu00r4uZAvqXgxj4hX1TVJC8zVXZgPzWBJQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ludvi\\Source\\Repos\\StockApplication15\\StockApplication\\StockApplication.csproj",
+  "projectFilePath": "C:\\Users\\ludvi\\source\\repos\\StockApplication15\\StockApplication\\StockApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ludvi\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\ludvi\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

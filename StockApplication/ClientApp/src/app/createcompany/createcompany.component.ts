@@ -11,20 +11,20 @@ import { clientUser } from '../TsClasses';
 export class CreateCompanyComponent {
     skjema: FormGroup;
     public errTxt: string;
-    public hidden: boolean = true;
+    public hidden: boolean = true; //error text box
 
     ngOnInit() {
         this.getCurrentUser();
     }
     getCurrentUser() {
-        this.http.get<clientUser>("api/Stock/getCurrentUser")
+        this.http.get<clientUser>("api/Stock/getCurrentUser") //get active user-session to ensure user is logged in
             .subscribe(user => {
                 
             },
                 error => {
                     console.log(error);
-                    if (error.status === 401 || error.status === 404) {
-                        this.router.navigate(['/login']);
+                    if (error.status === 401 || error.status === 404) { //unauthorized, need to log in
+                        this.router.navigate(['/login']); //redirect to login
                     }
                 }
             );
@@ -32,12 +32,12 @@ export class CreateCompanyComponent {
     validering = {
         
         companyName: [
-            null, Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZøæåØÆÅ\\-. ]{3,32}")])
+            null, Validators.compose([Validators.required, Validators.pattern("[0-9a-zA-ZøæåØÆÅ\\-. ]{3,32}")]) //companyname can be all characters between length 3 and 32
         ]
     }
 
     constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) {
-        this.skjema = fb.group(this.validering);
+        this.skjema = fb.group(this.validering); //validate input 
     }
 
     onSubmit() {
@@ -47,18 +47,18 @@ export class CreateCompanyComponent {
     
 
     createCompany() {
-        const companyName = this.skjema.value.companyName;
+        const companyName = this.skjema.value.companyName; //get value
 
-        this.http.post("api/Stock/" + companyName, companyName)
+        this.http.post("api/Stock/" + companyName, companyName) //create company with name
             .subscribe(_retur => {
-                this.router.navigate(['/']);
+                this.router.navigate(['/']); //navigate to home on success
             },
                 error => {
                     console.log(error);
-                    if (error.status === 401) {
+                    if (error.status === 401) { //Unauthorized, user not logged in
                         this.router.navigate(['/login']);
                     }
-                    else if (error.status === 400) {
+                    else if (error.status === 400) { //BadRequest, invalid name, or already exists.
                         this.errTxt = "Company already exists!";
                         this.hidden = false;
                     }
