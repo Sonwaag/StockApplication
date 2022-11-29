@@ -72,7 +72,7 @@
     <br />
     <div id="buttons" class="container">
         <!--Two buttons displayed on all users except admin, delete and logout buttons.-->
-        <button class="btn btn-danger" style="margin-right:16px;font-size:20px;" (click)="deleteUser()">Delete User</button>
+        <button class="btn btn-danger" style="margin-right:16px;font-size:20px;" (click)="clickMethod('name')">Delete User</button>
         <button class="btn btn-danger" style="margin-right: 16px; float: right; font-size: 20px; font-size: 20px; " (click)="logOut()">Log Out</button>
         <div id="error">{{errTxt}}</div>
     </div>

@@ -62,22 +62,26 @@ export class ProfileComponent {
             );
     };
 
-    deleteUser() {
-        this.http.delete("api/Stock/deleteUser")
-            .subscribe(_retur => {
-                this.router.navigate(['/']);
-            },
-                error => {
-                    console.log(error);
-                    if (error.status === 401) {
-                        this.router.navigate(['/login']);
+    clickMethod(name: string) {
+        if (confirm("Are you sure you want to delete this user?")) {
+            console.log(
+            this.http.delete("api/Stock/deleteUser")
+                .subscribe(_retur => {
+                    this.router.navigate(['/']);
+                },
+                    error => {
+                        console.log(error);
+                        if (error.status === 401) {
+                            this.router.navigate(['/login']);
+                        }
+                        if (error.status === 400) {
+                            this.errTxt = "Could not delete user";
+                        }
                     }
-                    if (error.status === 400) {
-                        this.errTxt = "Could not delete user";
-                    }
-                }
-            );
-    };
+                )
+            )
+        }
+    }
 
     logOut() {
         this.http.get("api/Stock/logOut/")
