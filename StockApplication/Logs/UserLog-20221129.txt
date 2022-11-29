@@ -317,3 +317,12 @@ app/leaderboard/leaderbord.component.ts:33:84 - error TS1005: ':' expected.
 2022-11-29T21:23:46.1756974+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
  (567f389e)
 2022-11-29T21:24:42.5343288+01:00  [INF] Updated values! (40dd7d77)
+2022-11-29T22:56:24.9605470+01:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-11-29T22:56:24.9674343+01:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-11-29T22:56:24.9686866+01:00  [INF] Content root path: "D:\VSCode\StockApplication2\StockApplication" (b5d60022)
+2022-11-29T22:56:30.9385763+01:00  [ERR] (node:14752) [DEP0111] DeprecationWarning: Access to process.binding('http_parser') is deprecated.
+ (054505bc)
+2022-11-29T22:56:30.9403181+01:00  [ERR] (Use `node --trace-deprecation ...` to show where the warning was created)
+ (567f389e)
+2022-11-29T22:56:54.9442058+01:00 40000029-0003-ff00-b63f-84710c7967bb [INF] User lol has logged in! (7dc7cc02)
+2022-11-29T22:57:02.9316516+01:00 4000002b-0003-ff00-b63f-84710c7967bb [INF] User lol was deleted! (43d14422)
